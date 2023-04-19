@@ -31,9 +31,14 @@ const livro = {
     ]
 }
 
-for (let i = 0; i < livro.capitulos.length; i++) {
-    const capitulo = i + 1;
-    livro.capitulos[i]["capitulo"] = capitulo;
+let numeroCapitulo = 0;
+
+for (let capitulo of livro.capitulos) {
+    const nomeCapitulo = capitulo.nome;
+    delete capitulo.nome;
+    numeroCapitulo++;
+    capitulo.numero = numeroCapitulo;
+    capitulo.nome = nomeCapitulo;
 }
 
 console.log(livro);
