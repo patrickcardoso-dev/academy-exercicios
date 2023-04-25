@@ -2,7 +2,7 @@ const pacientes = ['José', 'Pedro', 'Maria', 'João', 'Ana', 'Bárbara', 'Joana
 const operacao = "atender";
 const paciente = "Vitor"
 
-atenderPacientes = (pacientes, operacao, paciente) => {
+const atenderPacientes = (pacientes, operacao, paciente) => {
     if (operacao === "agendar") {
         pacientes.splice(pacientes.length, 0, paciente)
     } else if (operacao === "atender") {

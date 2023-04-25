@@ -23,7 +23,7 @@ const usuarios = [
 
 const petBuscado = "Salsicha";
 
-encontrarDono = (usuarios, petBuscado) => {
+const encontrarDono = (usuarios, petBuscado) => {
     let dono = "";
     let encontrado = false;
     

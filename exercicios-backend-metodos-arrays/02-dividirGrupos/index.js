@@ -1,7 +1,7 @@
 const nomes = ['Juninho', 'Vidal', 'Guido', 'Dani', 'Ruli', 'Diego'];
 const tamanhoDoGrupo = 4;
 
-dividirGrupos = (nomes, quantidade) => {
+const dividirGrupos = (nomes, quantidade) => {
     let grupo = [];
     let contador = 1;
 
