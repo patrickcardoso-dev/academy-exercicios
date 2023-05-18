@@ -1,0 +1,26 @@
+h2 {
+    margin: 0;
+    font-weight: lighter;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+}
+
+.horizontal {
+    display: inline-block;
+    margin: 2px 1px 60px;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
