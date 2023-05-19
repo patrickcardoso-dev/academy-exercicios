@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar {
+    margin: 8px;
+}
+
+ul {
+    width: 250px;
+    height: auto;
+    border: 2px solid lightgray;
+    
+    font-size: 20px;
+    font-family: sans-serif;
+    list-style: none;
+}
+
+ul li {
+    padding: 18px 26px;
+}
+
+li a {
+    color: gray;
+    text-decoration: none;
+}
+
+li:hover {
+    background-color: rgb(83, 233, 183);
+    cursor: pointer;
+}
+
+li:hover a {
+    color: white;
+}
+
+li:hover::before {
+    content: '> ';
+    color: white;
+}
+
