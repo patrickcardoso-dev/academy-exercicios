@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+aside {
+    width: 248px;
+    height: 100vh;
+    background-color: #253A5C;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+aside .image {
+    margin: 0 16px;
+    border-bottom: 1px solid #969090;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside img {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+}
+
+aside .button {
+    width: 216px;
+    height: 64px;
+    margin: 31px 16px;
+    background-color: #41AF1A;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.button a {
+    font-size: 22px;
+    font-family: "Mulish", sans-serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background-color: #456392;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main h1 {
+    font-size: 44px;
+    font-family: "Mulish", sans-serif;
+    font-weight: 700;
+    color: white;
+    margin: 32px 0 40px;
+}
+
+.cards {
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.card {
+    width: 220px;
+    height: 340px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.picture img {
+    width: 110px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #ECF3FC;
+    margin-top: 10px;
+}
+
+.profile {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile h3 {
+    font-family: "Mulish", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #131E30;
+}
+
+.profile a {
+    font-family: "Mulish", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #131E30;
+    text-decoration: none;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.data h4 {
+    font-family: "Mulish", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+}
