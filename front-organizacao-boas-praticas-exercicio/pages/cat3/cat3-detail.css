@@ -1,0 +1,35 @@
+.cat-detail {
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+.cat-detail img {
+  width: 800px;
+  height: 500px;
+  margin: 32px 0 24px 0;
+}
+
+.cat-detail p {
+  text-align: justify;
+}
+
+#back-button {
+  width: 100%;
+  margin-top: 32px;
+  border-radius: 7px;
+  padding: 12px 32px;
+
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: white;
+  background-color: orange;
+}
+
+#back-button:hover {
+  opacity: 0.8;
+}
