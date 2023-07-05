@@ -1,0 +1,11 @@
+.cards {
+    width: 100vw;
+    height: 100vh;
+    background-color: #456392;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+

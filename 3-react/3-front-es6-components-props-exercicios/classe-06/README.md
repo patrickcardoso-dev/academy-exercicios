@@ -3,6 +3,7 @@
 # Exercício de classe 🏫
 
 ## Cards de usuário
+
 Utilizando o projeto React da pasta "base" como base (ou criando um projeto a partir do comando `npx create-react-app nome-do-projeto`), siga as seguintes instruções:
 
 - Construa os cards de usuários presentes no figma.
@@ -12,6 +13,7 @@ Utilizando o projeto React da pasta "base" como base (ou criando um projeto a pa
 ---
 
 ### DICAS:
+
 No exercício será necessário:
 
 - Seguir o figma
@@ -22,13 +24,14 @@ No exercício será necessário:
 - Verificar quais propriedades mudam e adicionar propriedades para elas
 - Inserir o component no app.js quantas vezes for necessário passando as propriedades diferentes
 - Usar as informações dos usuários coletadas para passar os valores das propriedades
---- 
+
+---
 
 Preencha a checklist para finalizar o exercício:
 
-- [ ] Resolver o exercício revendo a aula se necessário
-- [ ] Adicionar as mudanças aos commits (`git add .` para adicionar todos os arquivos, ou `git add nome_do_arquivo` para adicionar um arquivo específico)
-- [ ] Commitar a cada mudança significativa ou na finalização do exercício (`git commit -m "Mensagem do commit"`)
-- [ ] Pushar os commits na sua branch na origem (`git push origin nome-da-branch`)
+- [ ✓ ] Resolver o exercício revendo a aula se necessário
+- [ ✓ ] Adicionar as mudanças aos commits (`git add .` para adicionar todos os arquivos, ou `git add nome_do_arquivo` para adicionar um arquivo específico)
+- [ ✓ ] Commitar a cada mudança significativa ou na finalização do exercício (`git commit -m "Mensagem do commit"`)
+- [ ✓ ] Pushar os commits na sua branch na origem (`git push origin nome-da-branch`)
 
 ###### tags: `módulo 3` `front-end` `exercício de classe` `React`
