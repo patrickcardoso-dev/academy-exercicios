@@ -1,0 +1,1 @@
+export const convidados = ["Carlos", "Amanda", "Fernanda", "Juliana", "Lucas", "Roberto"];
