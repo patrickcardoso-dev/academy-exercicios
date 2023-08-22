@@ -1,0 +1,21 @@
+.product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 478px;
+    width: 322px;
+  
+    cursor: pointer;
+}
+  
+.product-container img {
+    width: 322px;
+    height: 322px;
+    margin-top: 20px;
+}
+  
+.product-container:hover {
+    transform: scale(1.1);
+}
