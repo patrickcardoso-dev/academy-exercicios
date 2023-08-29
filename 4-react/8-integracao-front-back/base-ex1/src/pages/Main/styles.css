@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form button, 
+form input {
+  width: 400px;
+  height: 48px;
+  margin-top: 4px;
+}
+
+.users-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 400px;
+    width: 400px;
+    margin-top: 50px;
+    border: 1px solid lightgray;
+}
