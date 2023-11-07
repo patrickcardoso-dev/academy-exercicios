@@ -23,13 +23,13 @@ rotas.get('/empresas', async (req, res) => {
 
 		if (empresa && empresa.name) {
 			const dadosEmpresas = JSON.parse(
-				await fs.readFile('./src/dados/empresas.json')
+				await fs.readFile('./src/empresas.json')
 			)
 
 			dadosEmpresas.push(empresa)
 
 			await fs.writeFile(
-				'./src/dados/empresas.json',
+				'./src/empresas.json',
 				JSON.stringify(dadosEmpresas, null, 2)
 			)
 		};
