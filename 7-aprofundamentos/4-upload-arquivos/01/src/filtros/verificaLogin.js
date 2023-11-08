@@ -1,6 +1,5 @@
 const knex = require('../conexao');
 const jwt = require('jsonwebtoken');
-const senhaHash = require('../senhaHash');
 
 const verificaLogin = async (req, res, next) => {
     const { authorization } = req.headers;
@@ -12,7 +11,7 @@ const verificaLogin = async (req, res, next) => {
     try {
         const token = authorization.replace('Bearer ', '').trim();
 
-        const { id } = jwt.verify(token, senhaHash);
+        const { id } = jwt.verify(token, process.env.SENHA_JWT);
 
         const usuarioExiste = await knex('usuarios').where({ id }).first();
 
@@ -28,6 +27,6 @@ const verificaLogin = async (req, res, next) => {
     } catch (error) {
         return res.status(400).json(error.message);
     }
-}
+};
 
 module.exports = verificaLogin

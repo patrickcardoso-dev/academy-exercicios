@@ -1,4 +1,5 @@
 const knex = require('../conexao');
+const { uploadImagem, excluirImagem } = require('../servicos/uploads');
 
 const listarProdutos = async (req, res) => {
     const { usuario } = req;
@@ -41,7 +42,8 @@ const obterProduto = async (req, res) => {
 
 const cadastrarProduto = async (req, res) => {
     const { usuario } = req;
-    const { nome, estoque, preco, categoria, descricao, imagem } = req.body;
+    const { nome, estoque, preco, categoria, descricao } = req.body;
+    const { originalname, mimetype, buffer } = req.file
 
     if (!nome) {
         return res.status(404).json('O campo nome é obrigatório');
@@ -60,21 +62,34 @@ const cadastrarProduto = async (req, res) => {
     }
 
     try {
-        const produto = await knex('produtos').insert({
+        let produto = await knex('produtos').insert({
             usuario_id: usuario.id,
             nome,
             estoque,
             preco,
             categoria,
-            descricao,
-            imagem
+            descricao
         }).returning('*');
 
         if (!produto) {
             return res.status(400).json('O produto não foi cadastrado');
         }
 
-        return res.status(200).json(produto);
+        const id = produto[0].id
+
+        const imagem = await uploadImagem(
+            `produtos/${id}/${originalname}`,
+            buffer,
+            mimetype
+        )
+
+        produto = await knex('produtos').update({
+            imagem: imagem.path
+        }).where({ id }).returning('*')
+
+        produto[0].urlImagem = imagem.url
+
+        return res.status(200).json(produto[0]);
     } catch (error) {
         return res.status(400).json(error.message);
     }
@@ -83,9 +98,9 @@ const cadastrarProduto = async (req, res) => {
 const atualizarProduto = async (req, res) => {
     const { usuario } = req;
     const { id } = req.params;
-    const { nome, estoque, preco, categoria, descricao, imagem } = req.body;
+    const { nome, estoque, preco, categoria, descricao } = req.body;
 
-    if (!nome && !estoque && !preco && !categoria && !descricao && !imagem) {
+    if (!nome && !estoque && !preco && !categoria && !descricao) {
         return res.status(404).json('Informe ao menos um campo para atualizaçao do produto');
     }
 
@@ -106,8 +121,7 @@ const atualizarProduto = async (req, res) => {
                 estoque,
                 preco,
                 categoria,
-                descricao,
-                imagem
+                descricao
             });
 
         if (!produto) {
@@ -149,10 +163,81 @@ const excluirProduto = async (req, res) => {
     }
 }
 
+const atualizarImagemProduto = async (req, res) => {
+    const { originalname, mimetype, buffer } = req.file
+    const { id } = req.params;
+
+    try {
+        const produtoEncontrado = await knex('produtos').where({
+            id,
+            usuario_id: req.usuario.id
+        }).first();
+
+        if (!produtoEncontrado) {
+            return res.status(404).json('Produto não encontrado');
+        }
+
+        await excluirImagem(produtoEncontrado.imagem)
+
+        const upload = await uploadImagem(
+            `produtos/${produtoEncontrado.id}/${originalname}`,
+            buffer,
+            mimetype
+        )
+
+        const produto = await knex('produtos')
+            .where({ id })
+            .update({
+                imagem: upload.path
+            });
+
+        if (!produto) {
+            return res.status(400).json("O produto não foi atualizado");
+        }
+
+        return res.status(204).send()
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+}
+
+const excluirImagemProduto = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const produtoEncontrado = await knex('produtos').where({
+            id,
+            usuario_id: req.usuario.id
+        }).first();
+
+        if (!produtoEncontrado) {
+            return res.status(404).json('Produto não encontrado');
+        }
+
+        await excluirImagem(produtoEncontrado.imagem)
+
+        const produto = await knex('produtos')
+            .where({ id })
+            .update({
+                imagem: null
+            });
+
+        if (!produto) {
+            return res.status(400).json("O produto não foi atualizado");
+        }
+
+        return res.status(204).send()
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+}
+
 module.exports = {
     listarProdutos,
     obterProduto,
     cadastrarProduto,
     atualizarProduto,
-    excluirProduto
+    excluirProduto,
+    atualizarImagemProduto,
+    excluirImagemProduto
 }

@@ -3,6 +3,7 @@ const usuarios = require('./controladores/usuarios');
 const login = require('./controladores/login');
 const produtos = require('./controladores/produtos');
 const verificaLogin = require('./filtros/verificaLogin');
+const multer = require('./filtros/multer')
 
 const rotas = express();
 
@@ -22,8 +23,10 @@ rotas.put('/perfil', usuarios.atualizarPerfil);
 // crud de produtos
 rotas.get('/produtos', produtos.listarProdutos);
 rotas.get('/produtos/:id', produtos.obterProduto);
-rotas.post('/produtos', produtos.cadastrarProduto);
+rotas.post('/produtos', multer.single('imagem'), produtos.cadastrarProduto);
 rotas.put('/produtos/:id', produtos.atualizarProduto);
 rotas.delete('/produtos/:id', produtos.excluirProduto);
+rotas.delete('/produtos/:id/imagem', produtos.excluirImagemProduto);
+rotas.patch('/produtos/:id/imagem', multer.single('imagem'), produtos.atualizarImagemProduto);
 
 module.exports = rotas;
